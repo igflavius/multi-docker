@@ -1,0 +1,8 @@
+FROM node:alpine
+WORKDIR '/app'
+COPY ./package.json ./
+RUN npm install
+COPY . .
+RUN rm -rf node_modules/.bin/react-scripts && npm install react-scripts@latest
+RUN chown 21120:20514 *
+CMD ["npm", "run", "start"]
