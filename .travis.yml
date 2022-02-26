@@ -6,7 +6,7 @@ before_install:
   - docker build -t igflavius/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run igflavius/react-test npm test -- --coverage
+  - docker run -e CI=true igflavius/react-test npm test -- --coverage
 
 after_success: 
   - docker build -t igflavius/multi-client ./client
