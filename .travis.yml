@@ -9,12 +9,12 @@ script:
   - docker run -e CI=true igflavius/react-test npm test -- --coverage
 
 after_success: 
-  - docker build -t igflavius/multi-client ./client
-  - docker build -t igflavius/multi-nginx ./nginx
-  - docker build -t igflavius/multi-server ./server
-  - docker build -t igflavius/multi-worker ./worker
+  - docker build -t igflavius/odyssey:multi-client ./client
+  - docker build -t igflavius/odyssey:multi-nginx ./nginx
+  - docker build -t igflavius/odyssey:multi-server ./server
+  - docker build -t igflavius/odyssey:multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push igflavius/multi-client
-  - docker push igflavius/multi-nginx
-  - docker push igflavius/multi-server
-  - docker push igflavius/multi-worker
+  - docker push igflavius/odyssey:multi-client
+  - docker push igflavius/odyssey:multi-nginx
+  - docker push igflavius/odyssey:multi-server
+  - docker push igflavius/odyssey:multi-worker
